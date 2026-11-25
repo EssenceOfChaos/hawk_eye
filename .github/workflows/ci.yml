@@ -1,0 +1,34 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  test:
+    runs-on: ubuntu-24.04
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          # The oldest supported pair (Elixir 1.15 needs OTP 25+, which has :public_key.cacerts_get/0)
+          - elixir: "1.15"
+            otp: "25"
+          - elixir: "1.18"
+            otp: "27"
+            lint: true
+    steps:
+      - uses: actions/checkout@v4
+      - uses: erlef/setup-beam@v1
+        with:
+          elixir-version: ${{ matrix.elixir }}
+          otp-version: ${{ matrix.otp }}
+      - run: mix deps.get
+      - run: mix format --check-formatted
+        if: matrix.lint
+      - run: mix compile --warnings-as-errors
+      - run: mix test
