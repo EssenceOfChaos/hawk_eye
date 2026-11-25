@@ -4,7 +4,7 @@ Find out when an Oban job fails, or when it silently stops running.
 
 `hawk_eye` reports your scheduled jobs to [HawkEye](https://hawkeye.observer) heartbeat
 monitors. Each monitor expects a ping every period. If a job fails on its last attempt,
-HawkEye alerts you with the error. If the ping doesn't arrive at all because the cron plugin
+HawkEye alerts you at once and keeps the error message in the monitor's ping log. If the ping doesn't arrive at all because the cron plugin
 stopped, a node died or a queue was paused, HawkEye notices the missed deadline and alerts you
 anyway. Nothing inside your application can report that, because whatever stopped the job
 usually stops the reporting too.

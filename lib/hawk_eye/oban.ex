@@ -48,7 +48,7 @@ defmodule HawkEye.Oban do
     `:every_attempt` reports every failed attempt.
   * `:cancelled` - what a cancelled job reports: `:ignore` (default), `:success` or `:fail`.
   * `:include_error` - `true` (default) sends the error message with a failure, so you can
-    read it in HawkEye and in the alert. `false` sends only the worker name and attempt
+    read it in the monitor's ping log in HawkEye. `false` sends only the worker name and attempt
     number. Turn it off if your error messages may contain personal or secret data.
   * `:include_duration` - `true` (default) sends how long a successful job took.
   """
