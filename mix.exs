@@ -51,7 +51,7 @@ defmodule HawkEye.MixProject do
     [
       main: "readme",
       source_ref: "v#{@version}",
-      extras: ["README.md", "CHANGELOG.md", "LICENSE": [title: "License"]]
+      extras: ["README.md", "CHANGELOG.md", LICENSE: [title: "License"]]
     ]
   end
 end
