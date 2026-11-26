@@ -2,8 +2,9 @@ defmodule HawkEye.Oban do
   @moduledoc """
   Reports Oban jobs to HawkEye heartbeat monitors, with no changes to your workers.
 
-  Create a heartbeat monitor in HawkEye for each scheduled worker, with its period set to
-  how often the job runs (and a little grace time). Then map each worker to its monitor's
+  [Create a heartbeat monitor](https://hawkeye.observer/monitors/new?type=heartbeat&utm_medium=docs&utm_source=hawk_eye&utm_campaign=elixir) in
+  HawkEye for each scheduled worker, with its period set to how often the job runs (and a
+  little grace time). No account yet? [Sign up free](https://hawkeye.observer/register?utm_medium=docs&utm_source=hawk_eye&utm_campaign=elixir). Then map each worker to its monitor's
   ping token or ping URL:
 
       # config/runtime.exs

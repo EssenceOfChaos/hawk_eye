@@ -1,6 +1,10 @@
 defmodule HawkEye do
   @moduledoc """
-  Report scheduled jobs to [HawkEye](https://hawkeye.observer) heartbeat monitors.
+  Report scheduled jobs to [HawkEye](https://hawkeye.observer/elixir?utm_medium=docs&utm_source=hawk_eye&utm_campaign=elixir) heartbeat monitors.
+
+  HawkEye is the hosted service that watches the deadlines and sends the alerts, so you need
+  an account: [create one free](https://hawkeye.observer/register?utm_medium=docs&utm_source=hawk_eye&utm_campaign=elixir) (no credit card; the
+  Free plan includes 5 monitors).
 
   A heartbeat monitor expects a ping every period (for example once a day). When a ping is
   late, or the job reports a failure, HawkEye opens an incident and alerts you. HawkEye checks

@@ -2,10 +2,10 @@
 
 Find out when an Oban job fails, or when it silently stops running.
 
-`hawk_eye` reports your scheduled jobs to [HawkEye](https://hawkeye.observer) heartbeat
-monitors. Each monitor expects a ping every period. If a job fails on its last attempt,
-HawkEye alerts you at once and keeps the error message in the monitor's ping log. If the ping doesn't arrive at all because the cron plugin
-stopped, a node died or a queue was paused, HawkEye notices the missed deadline and alerts you
+`hawk_eye` reports your scheduled jobs to [HawkEye](https://hawkeye.observer/elixir?utm_medium=readme&utm_source=hawk_eye&utm_campaign=elixir),
+a hosted monitoring service, through its heartbeat monitors. Each monitor expects a ping every period. If a job fails on its last attempt,
+HawkEye alerts you at once and keeps the error message in the monitor's ping log. If the
+ping doesn't arrive at all because the cron plugin stopped, a node died or a queue was paused, HawkEye notices the missed deadline and alerts you
 anyway. Nothing inside your application can report that, because whatever stopped the job
 usually stops the reporting too.
 
@@ -15,6 +15,12 @@ usually stops the reporting too.
   block a job or stop your application from starting.
 - **No extra HTTP client.** It uses Erlang's built-in `:httpc` with certificate verification,
   and depends only on `:telemetry`.
+
+## Before you start
+
+The package sends pings; HawkEye watches the deadlines and sends the alerts, so you need a
+HawkEye account. [Create a free account](https://hawkeye.observer/register?utm_medium=readme&utm_source=hawk_eye&utm_campaign=elixir): no credit
+card, and the Free plan includes 5 monitors. No API key is needed.
 
 ## Installation
 
@@ -28,10 +34,9 @@ end
 
 ## Setup
 
-**1. Create a heartbeat monitor** in HawkEye for each scheduled worker
-(Monitors → Add monitor → Heartbeat). Set the period to how often the job runs and the grace
-time to how late it may finish. Copy its ping URL. The Free plan includes 5 monitors and
-needs no API key.
+**1. [Create a heartbeat monitor](https://hawkeye.observer/monitors/new?type=heartbeat&utm_medium=readme&utm_source=hawk_eye&utm_campaign=elixir)**
+in HawkEye for each scheduled worker (or Monitors → Monitor a cron job). Set the period to
+how often the job runs and the grace time to how late it may finish, then copy its ping URL.
 
 **2. Map each worker to its ping URL**, usually from environment variables:
 
@@ -100,6 +105,12 @@ Heartbeats are for jobs that should run on a schedule: nightly reports, hourly s
 tasks. Don't list a worker that runs thousands of times a minute, because HawkEye accepts
 about one ping a second per monitor. To watch a busy queue, schedule a small job that checks
 the queue and reports it instead.
+
+## Learn more
+
+- [HawkEye for Elixir and Oban](https://hawkeye.observer/elixir?utm_medium=readme&utm_source=hawk_eye&utm_campaign=elixir)
+- [Heartbeat monitoring guide](https://hawkeye.observer/docs/cron-job-monitoring?utm_medium=readme&utm_source=hawk_eye&utm_campaign=elixir): deadlines,
+  grace time, alerts and the ping log
 
 ## License
 

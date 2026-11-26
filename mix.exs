@@ -1,7 +1,7 @@
 defmodule HawkEye.MixProject do
   use Mix.Project
 
-  @version "0.1.0"
+  @version "0.1.1"
   @source_url "https://github.com/EssenceOfChaos/hawk_eye"
 
   def project do
@@ -17,7 +17,8 @@ defmodule HawkEye.MixProject do
       package: package(),
       docs: docs(),
       source_url: @source_url,
-      homepage_url: "https://hawkeye.observer"
+      homepage_url:
+        "https://hawkeye.observer/elixir?utm_medium=hex&utm_source=hawk_eye&utm_campaign=elixir"
     ]
   end
 
@@ -40,7 +41,10 @@ defmodule HawkEye.MixProject do
       licenses: ["MIT"],
       links: %{
         "GitHub" => @source_url,
-        "HawkEye" => "https://hawkeye.observer",
+        "HawkEye" =>
+          "https://hawkeye.observer/elixir?utm_medium=hex&utm_source=hawk_eye&utm_campaign=elixir",
+        "Create a free HawkEye account" =>
+          "https://hawkeye.observer/register?utm_medium=hex&utm_source=hawk_eye&utm_campaign=elixir",
         "Changelog" => "#{@source_url}/blob/main/CHANGELOG.md"
       },
       files: ~w(lib mix.exs README.md LICENSE CHANGELOG.md .formatter.exs)
