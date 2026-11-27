@@ -1,3 +1,5 @@
+[![CI](https://github.com/EssenceOfChaos/hawk_eye/actions/workflows/ci.yml/badge.svg)](https://github.com/EssenceOfChaos/hawk_eye/actions/workflows/ci.yml)
+
 # HawkEye for Elixir
 
 Find out when an Oban job fails, or when it silently stops running.
@@ -58,15 +60,15 @@ environment variable isn't set is skipped with a warning.
 
 ## What gets reported
 
-| Job outcome | Sent to HawkEye |
-|---|---|
-| Succeeded | success, with how long it took |
-| Failed, will be retried | nothing (or a failure, with `fail_on: :every_attempt`) |
-| Failed on its last attempt | failure, with the error message |
-| Discarded by the worker | failure |
-| Canceled | nothing (configurable with `cancelled:`) |
-| Snoozed | nothing |
-| Never ran | nothing, so HawkEye alerts when the deadline passes |
+| Job outcome                | Sent to HawkEye                                        |
+| -------------------------- | ------------------------------------------------------ |
+| Succeeded                  | success, with how long it took                         |
+| Failed, will be retried    | nothing (or a failure, with `fail_on: :every_attempt`) |
+| Failed on its last attempt | failure, with the error message                        |
+| Discarded by the worker    | failure                                                |
+| Canceled                   | nothing (configurable with `cancelled:`)               |
+| Snoozed                    | nothing                                                |
+| Never ran                  | nothing, so HawkEye alerts when the deadline passes    |
 
 Job arguments are never sent. To send only the worker name and attempt number, without the
 error message, set `include_error: false`.
